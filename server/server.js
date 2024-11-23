@@ -2,9 +2,9 @@ const express = require('express')
 const mongoose =require('mongoose');  
 const cookieParser =require('cookie-parser');
 const cors =require('cors');
+require('dotenv').config();
 
-mongoose.connect('mongodb+srv://khuranaraghav388:raghavkhurana2024@cluster0.6d0xe.mongodb.net/'
-)
+mongoose.connect('MONGODB_URL')
 .then(()=>console.log('Mongo DB CONNECTED'))
 .catch((error)=>console.log(error));
 

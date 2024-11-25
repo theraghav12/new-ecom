@@ -35,31 +35,42 @@ function AuthRegister() {
     });
   }
 
-  console.log(formData);
-
   return (
-    <div className="mx-auto w-full max-w-md space-y-6">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">
-          Create new account
-        </h1>
-        <p className="mt-2">
-          Already have an account
-          <Link
-            className="font-medium ml-2 text-primary hover:underline"
-            to="/auth/login"
-          >
-            Login
-          </Link>
-        </p>
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 py-12 px-6 lg:px-8">
+      <div className="max-w-md w-full bg-white shadow-xl rounded-lg p-8 space-y-6">
+        <div className="text-center mb-6">
+          <h1 className="text-3xl font-semibold text-gray-900">Create New Account</h1>
+          <p className="mt-2 text-sm text-gray-600">
+            Already have an account?{" "}
+            <Link
+              to="/auth/login"
+              className="font-medium text-indigo-600 hover:text-indigo-500"
+            >
+              Login
+            </Link>
+          </p>
+        </div>
+        <CommonForm
+          formControls={registerFormControls}
+          buttonText={"Sign Up"}
+          formData={formData}
+          setFormData={setFormData}
+          onSubmit={onSubmit}
+        />
+        <div className="text-center">
+          <p className="text-sm text-gray-600">
+            By signing up, you agree to our{" "}
+            <Link to="/terms" className="text-indigo-600 hover:text-indigo-500">
+              Terms of Service
+            </Link>{" "}
+            and{" "}
+            <Link to="/privacy" className="text-indigo-600 hover:text-indigo-500">
+              Privacy Policy
+            </Link>
+            .
+          </p>
+        </div>
       </div>
-      <CommonForm
-        formControls={registerFormControls}
-        buttonText={"Sign Up"}
-        formData={formData}
-        setFormData={setFormData}
-        onSubmit={onSubmit}
-      />
     </div>
   );
 }

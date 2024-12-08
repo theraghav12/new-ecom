@@ -41,11 +41,11 @@ export const registerFormControls = [
   
   export const addProductFormElements = [
     {
-      label: "Title",
-      name: "title",
+      label: "Product Name",
+      name: "productName",
       componentType: "input",
       type: "text",
-      placeholder: "Enter product title",
+      placeholder: "Enter product name",
     },
     {
       label: "Description",
@@ -58,11 +58,30 @@ export const registerFormControls = [
       name: "category",
       componentType: "select",
       options: [
-        { id: "pen", label: "Pens" },
-        { id: "papers", label: "Papers" },
-        { id: "notebook", label: "Notebook" },
-        { id: "Office Supplies", label: "Office Supplies" },
-        { id: "Writing Tools", label: "Writing Tools" },
+        { id: "prescription", label: "Prescription Medicines" },
+        { id: "otc", label: "Over-the-Counter (OTC)" },
+        {
+          id: "supplements",
+          label: "Supplements",
+          subcategories: [
+            { id: "supplements-men", label: "For Men" },
+            { id: "supplements-women", label: "For Women" },
+            { id: "supplements-kids", label: "For Kids" },
+            { id: "supplements-seniors", label: "For Seniors" },
+            { id: "supplements-general", label: "General Wellness" },
+          ],
+        },
+        {
+          id: "wellness",
+          label: "Wellness Products",
+          subcategories: [
+            { id: "skin-care", label: "Skin Care" },
+            { id: "hair-care", label: "Hair Care" },
+            { id: "weight-management", label: "Weight Management" },
+            { id: "vitamins", label: "Vitamins & Minerals" },
+          ],
+        },
+        { id: "equipment", label: "Medical Equipment" },
       ],
     },
     {
@@ -70,11 +89,13 @@ export const registerFormControls = [
       name: "brand",
       componentType: "select",
       options: [
-        { id: "Reynolds", label: "Reynolds" },
-        { id: "Classmate", label: "Classmate" },
-        { id: "Parker", label: "Parker" },
-        { id: "Luxor", label: "Luxor" },
-        { id: "Camlin", label: "Camlin" },
+        { id: "pfizer", label: "Pfizer" },
+        { id: "cipla", label: "Cipla" },
+        { id: "sun-pharma", label: "Sun Pharma" },
+        { id: "gsk", label: "GSK" },
+        { id: "lupin", label: "Lupin" },
+        { id: "himalaya", label: "Himalaya" },
+        { id: "dabur", label: "Dabur" },
       ],
     },
     {
@@ -92,11 +113,11 @@ export const registerFormControls = [
       placeholder: "Enter sale price (optional)",
     },
     {
-      label: "Total Stock",
-      name: "totalStock",
+      label: "Stock Quantity",
+      name: "stockQuantity",
       componentType: "input",
       type: "number",
-      placeholder: "Enter total stock",
+      placeholder: "Enter stock quantity",
     },
   ];
   
@@ -107,72 +128,80 @@ export const registerFormControls = [
       path: "/shop/home",
     },
     {
-      id: "products",
-      label: "Products",
-      path: "/shop/listing",
+      id: "medicines",
+      label: "Medicines",
+      path: "/shop/medicines",
     },
-    // {
-    //   id: "men",
-    //   label: "Men",
-    //   path: "/shop/listing",
-    // },
-    // {
-    //   id: "women",
-    //   label: "Women",
-    //   path: "/shop/listing",
-    // },
-    // {
-    //   id: "kids",
-    //   label: "Kids",
-    //   path: "/shop/listing",
-    // },
-    // {
-    //   id: "footwear",
-    //   label: "Footwear",
-    //   path: "/shop/listing",
-    // },
-    // {
-    //   id: "accessories",
-    //   label: "Accessories",
-    //   path: "/shop/listing",
-    // },
-    // {
-    //   id: "search",
-    //   label: "Search",
-    //   path: "/shop/search",
-    // },
+    {
+      id: "supplements",
+      label: "Supplements",
+      path: "/shop/supplements",
+    },
+    {
+      id: "equipment",
+      label: "Medical Equipment",
+      path: "/shop/equipment",
+    },
+    {
+      id: "wellness",
+      label: "Wellness",
+      path: "/shop/wellness",
+    },
   ];
   
   export const categoryOptionsMap = {
-    pens: "Pens",
-    papers: "Papers",
-    notebook: "Notebook",
-    officeSupplies: "Office Supplies",
-    writingTools: "Writing Tools",
+    prescription: "Prescription Medicines",
+    otc: "Over-the-Counter (OTC)",
+    supplements: "Supplements",
+    supplementsMen: "Supplements for Men",
+    supplementsWomen: "Supplements for Women",
+    supplementsKids: "Supplements for Kids",
+    supplementsSeniors: "Supplements for Seniors",
+    supplementsGeneral: "General Wellness Supplements",
+    wellness: "Wellness Products",
+    skinCare: "Skin Care",
+    hairCare: "Hair Care",
+    weightManagement: "Weight Management",
+    vitamins: "Vitamins & Minerals",
+    equipment: "Medical Equipment",
   };
   
   export const brandOptionsMap = {
-    reynolds: "Reynolds",
-    classmate: "Classmate",
-    parker: "Parker",
-    luxor: "Luxor",
-    camlin: "Camlin",
+    pfizer: "Pfizer",
+    cipla: "Cipla",
+    sunPharma: "Sun Pharma",
+    gsk: "GSK",
+    lupin: "Lupin",
+    himalaya: "Himalaya",
+    dabur: "Dabur",
   };
   
   export const filterOptions = {
     category: [
-      { id: "pen", label: "Pens" },
-      { id: "papers", label: "Papers" },
-      { id: "notebook", label: "Notebook" },
-      { id: "Office Supplies", label: "Office Supplies" },
-      { id: "Writing Tools", label: "Writing Tools" },
+      { id: "prescription", label: "Prescription Medicines" },
+      { id: "otc", label: "Over-the-Counter (OTC)" },
+      { id: "supplements", label: "Supplements" },
+      { id: "equipment", label: "Medical Equipment" },
+      { id: "wellness", label: "Wellness Products" },
+    ],
+    subcategory: [
+      { id: "supplements-men", label: "Supplements for Men" },
+      { id: "supplements-women", label: "Supplements for Women" },
+      { id: "supplements-kids", label: "Supplements for Kids" },
+      { id: "supplements-seniors", label: "Supplements for Seniors" },
+      { id: "skin-care", label: "Skin Care" },
+      { id: "hair-care", label: "Hair Care" },
+      { id: "weight-management", label: "Weight Management" },
+      { id: "vitamins", label: "Vitamins & Minerals" },
     ],
     brand: [
-      { id: "Reynolds", label: "Reynolds" },
-      { id: "Classmate", label: "Classmate" },
-      { id: "Parker", label: "Parker" },
-      { id: "Luxor", label: "Luxor" },
-      { id: "Camlin", label: "Camlin" },
+      { id: "pfizer", label: "Pfizer" },
+      { id: "cipla", label: "Cipla" },
+      { id: "sun-pharma", label: "Sun Pharma" },
+      { id: "gsk", label: "GSK" },
+      { id: "lupin", label: "Lupin" },
+      { id: "himalaya", label: "Himalaya" },
+      { id: "dabur", label: "Dabur" },
     ],
   };
   

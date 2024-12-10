@@ -1,14 +1,5 @@
 const mongoose = require("mongoose");
 
-const ReviewSchema = new mongoose.Schema(
-  {
-    customerName: String,
-    comment: String,
-    rating: { type: Number, min: 1, max: 5 },
-    date: { type: Date, default: Date.now },
-  },
-  { _id: false } 
-);
 
 const ProductSchema = new mongoose.Schema(
   {
@@ -20,8 +11,7 @@ const ProductSchema = new mongoose.Schema(
     price: Number,
     salePrice: Number,
     totalStock: Number,
-    averageReview: { type: Number, default: 0 },
-    reviews: [ReviewSchema], 
+    averageReview: Number,
   },
   { timestamps: true }
 );

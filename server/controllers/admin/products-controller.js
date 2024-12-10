@@ -20,7 +20,7 @@ const handleImageUpload = async (req, res) => {
   }
 };
 
-
+//add a new product
 const addProduct = async (req, res) => {
   try {
     const {
@@ -32,8 +32,10 @@ const addProduct = async (req, res) => {
       price,
       salePrice,
       totalStock,
+      averageReview,
     } = req.body;
 
+    console.log(averageReview, "averageReview");
     const newlyCreatedProduct = new Product({
       image,
       title,
@@ -43,8 +45,7 @@ const addProduct = async (req, res) => {
       price,
       salePrice,
       totalStock,
-      averageReview: 0, 
-      reviews: [], 
+      averageReview,
     });
 
     await newlyCreatedProduct.save();
@@ -56,11 +57,12 @@ const addProduct = async (req, res) => {
     console.log(e);
     res.status(500).json({
       success: false,
-      message: "Error occurred",
+      message: "Error occured",
     });
   }
 };
 
+//fetch all products
 
 const fetchAllProducts = async (req, res) => {
   try {
@@ -78,6 +80,7 @@ const fetchAllProducts = async (req, res) => {
   }
 };
 
+//edit a product
 const editProduct = async (req, res) => {
   try {
     const { id } = req.params;
@@ -90,6 +93,7 @@ const editProduct = async (req, res) => {
       price,
       salePrice,
       totalStock,
+      averageReview,
     } = req.body;
 
     let findProduct = await Product.findById(id);
@@ -108,6 +112,7 @@ const editProduct = async (req, res) => {
       salePrice === "" ? 0 : salePrice || findProduct.salePrice;
     findProduct.totalStock = totalStock || findProduct.totalStock;
     findProduct.image = image || findProduct.image;
+    findProduct.averageReview = averageReview || findProduct.averageReview;
 
     await findProduct.save();
     res.status(200).json({
@@ -118,11 +123,12 @@ const editProduct = async (req, res) => {
     console.log(e);
     res.status(500).json({
       success: false,
-      message: "Error occurred",
+      message: "Error occured",
     });
   }
 };
 
+//delete a product
 const deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
@@ -146,7 +152,6 @@ const deleteProduct = async (req, res) => {
     });
   }
 };
-
 module.exports = {
   handleImageUpload,
   addProduct,

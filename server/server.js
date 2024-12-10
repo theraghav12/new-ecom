@@ -27,9 +27,21 @@ mongoose
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const allowedOrigins = [
+  "http://localhost:5173", // Development
+  "https://new-ecom-beta.vercel.app", // Production
+];
+
 app.use(
   cors({
-    origin: "https://new-ecom-beta.vercel.app",
+    origin: (origin, callback) => {
+      // Allow requests with no origin (like mobile apps or curl requests)
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
@@ -38,9 +50,10 @@ app.use(
       "Expires",
       "Pragma",
     ],
-    credentials: true,
+    credentials: true, // Include cookies or authorization headers
   })
 );
+
 
 app.use(cookieParser());
 app.use(express.json());

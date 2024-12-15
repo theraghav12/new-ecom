@@ -1,21 +1,13 @@
 import { Button } from "@/components/ui/button";
-import bannerOne from "../../assets/banner_1.jpg";
-import bannerTwo from "../../assets/banner_2.jpg";
-import bannerThree from "../../assets/banner_3.jpg";
 import {
   Airplay,
   BabyIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
   CloudLightning,
-  Heater,
-  Images,
-  Shirt,
-  ShirtIcon,
-  ShoppingBasket,
-  UmbrellaIcon,
-  WashingMachine,
-  WatchIcon,
+  Pill,
+  BriefcaseMedical,
+
   Pen,
   Sheet,
   Notebook,
@@ -37,19 +29,19 @@ import ProductDetailsDialog from "@/components/shopping-view/product-details";
 import { getFeatureImages } from "@/store/common-slice";
 
 const categoriesWithIcon = [
-  { id: "pen", label: "Pens", icon: Pen },
-  { id: "papers", label: "Papers", icon: Sheet },
-  { id: "notebook", label: "Notebook", icon: Notebook },
-  { id: "Office Supplies", label: "Office Supplies", icon: Building },
-  { id: "Writing Tools", label: "Writing Tools", icon: PenTool },
+  { id: "prescription", label: "Prescription Medicines", icon: Pill },
+  { id: "otc", label: "Over-the-Counter (OTC)", icon: BriefcaseMedical },
+  { id: "supplements", label: "Supplements", icon: Pill },
+  { id: "skin-care", label: "Skin Care", icon: Pill },
+  { id: "vitamins", label: "Vitamins & Minerals", icon: Pill },
 ];
 
 const brandsWithIcon = [
-  { id: "pen", label: "Pens", icon: Pen },
-  { id: "papers", label: "Papers", icon: Sheet },
-  { id: "notebook", label: "Notebook", icon: Notebook },
-  { id: "Office Supplies", label: "Office Supplies", icon: Building },
-  { id: "Writing Tools", label: "Writing Tools", icon: PenTool },
+  { id: "pfizer", label: "Pfizer", icon: Pill },
+  { id: "cipla", label: "Cipla", icon: Pill },
+  { id: "sun-pharma", label: "Sun Pharma", icon: Pill },
+  { id: "himalaya", label: "Himalaya", icon: Pill },
+  { id: "dabur", label: "Dabur", icon: Pill },
 ];
 function ShoppingHome() {
   const [currentSlide, setCurrentSlide] = useState(0);
